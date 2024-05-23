@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TicTacToeFinalProject</string>
+    <string name="tic_tac_toe">Tic Tac Toe</string>
+    <string name="o">O</string>
+    <string name="x">X</string>
+    <string name="currentmove_wins">$currentMove Wins!</string>
+</resources>
