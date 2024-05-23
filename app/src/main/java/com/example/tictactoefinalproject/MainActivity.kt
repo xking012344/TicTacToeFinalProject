@@ -23,17 +23,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeCurrentMove(){
-        if(currentMove == "X"){
+    private fun changeCurrentMove() {
+        if (currentMove == "X") {
             currentMove = "O"
-        } else{
+        } else {
             currentMove = "X"
         }
     }
 
-    private fun handleMove(){
+    private fun handleMove() {
         val win: Boolean = checkForWin()
-        if(win){
+        if (win) {
             handleWin()
         }
         changeCurrentMove()
@@ -53,103 +53,117 @@ class MainActivity : AppCompatActivity() {
         )
 
 
-        return checkRowForWin(textArray) || checkColForWin(textArray) || checkLeftDiagForWin(textArray) || checkRightDiagForWin(textArray)
+        return checkRowForWin(textArray) || checkColForWin(textArray) || checkLeftDiagForWin(
+            textArray
+        ) || checkRightDiagForWin(textArray)
 
     }
 
     private fun checkRightDiagForWin(textArray: Array<CharSequence>): Boolean {
-            return  textArray[2] == textArray[4] && textArray[4] == textArray[6] && textArray[6] != ""
+        return textArray[2] == textArray[4] && textArray[4] == textArray[6] && textArray[6] != ""
 
     }
 
     private fun checkLeftDiagForWin(textArray: Array<CharSequence>): Boolean {
-            return textArray[0] == textArray[4] && textArray[4] == textArray[8] && textArray[8] != ""
+        return textArray[0] == textArray[4] && textArray[4] == textArray[8] && textArray[8] != ""
     }
 
     private fun checkColForWin(textArray: Array<CharSequence>): Boolean {
-        for (col in 0..2){
-            if (textArray[3 * col + 0] == textArray[3 * col +1] && textArray[3 * col + 1] == textArray[3 * col + 2]){
-                return true
+        for (col in 0..2) {
+            if (textArray[col + 0] == textArray[col + 3] && textArray[col + 3] == textArray[col + 6]) {
+                if (textArray[col + 0] != "") {
+                    return true;
+                }
             }
         }
         return false
     }
 
     private fun checkRowForWin(textArray: Array<CharSequence>): Boolean {
-        for (row in 0..2){
-           if( textArray[3 * row + 0] == textArray[3 * row + 1] && textArray[3 * row + 1] == textArray[3 * row + 2]){
-               return true
-           }
+        for (row in 0..2) {
+            if (textArray[3 * row + 0] == textArray[3 * row + 1] && textArray[3 * row + 1] == textArray[3 * row + 2]) {
+                if (textArray[3 * row + 0] != "") {
+                    return true;
+                }
+            }
         }
         return false
     }
 
     private fun handleWin() {
         var winLoseText: TextView = findViewById(R.id.winLose)
+        winLoseText.text = "$currentMove Wins!"
     }
 
     fun topLeftClick(view: View) {
         val button: Button = findViewById(R.id.button4)
-        if (button.text.equals("")){
+        if (button.text.equals("")) {
             button.text = currentMove
-            changeCurrentMove()
+            handleMove()
         }
     }
 
     fun bottomRightClick(view: View) {
         val button: Button = findViewById(R.id.button11)
-        if (button.text.equals("")){
+        if (button.text.equals("")) {
             button.text = currentMove
-            changeCurrentMove()
+            handleMove()
         }
     }
+
     fun bottomLeftClick(view: View) {
         val button: Button = findViewById(R.id.button10)
-        if (button.text.equals("")){
+        if (button.text.equals("")) {
             button.text = currentMove
-            changeCurrentMove()
+            handleMove()
         }
     }
+
     fun bottomMiddleClick(view: View) {
         val button: Button = findViewById(R.id.button9)
-        if (button.text.equals("")){
+        if (button.text.equals("")) {
             button.text = currentMove
-            changeCurrentMove()
+            handleMove()
         }
     }
+
     fun midRightClick(view: View) {
         val button: Button = findViewById(R.id.button8)
-        if (button.text.equals("")){
+        if (button.text.equals("")) {
             button.text = currentMove
-            changeCurrentMove()
+            handleMove()
         }
     }
+
     fun midLeftClick(view: View) {
         val button: Button = findViewById(R.id.button7)
-        if (button.text.equals("")){
+        if (button.text.equals("")) {
             button.text = currentMove
-            changeCurrentMove()
+            handleMove()
         }
     }
+
     fun midMiddleClick(view: View) {
         val button: Button = findViewById(R.id.button6)
-        if (button.text.equals("")){
+        if (button.text.equals("")) {
             button.text = currentMove
-            changeCurrentMove()
+            handleMove()
         }
     }
+
     fun topRightClick(view: View) {
         val button: Button = findViewById(R.id.button5)
-        if (button.text.equals("")){
+        if (button.text.equals("")) {
             button.text = currentMove
-            changeCurrentMove()
+            handleMove()
         }
     }
+
     fun topMiddleClick(view: View) {
         val button: Button = findViewById(R.id.button3)
-        if (button.text.equals("")){
+        if (button.text.equals("")) {
             button.text = currentMove
-            changeCurrentMove()
+            handleMove()
         }
     }
 }
